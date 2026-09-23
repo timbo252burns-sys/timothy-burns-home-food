@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Timothy Burns — NY Home Food Business</title>
+<style>
+:root{--bg:#f4f3ee;--card:#fff;--ink:#242922;--muted:#687066;--green:#65764d;--green2:#e5eadc;--line:#dddcd4;--red:#a94b43;--amber:#b37b18}
+*{box-sizing:border-box}html,body{max-width:100%;overflow-x:hidden}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+header{background:#273025;color:#fff;padding:25px 18px}header h1{margin:0;font-size:27px}header p{margin:5px 0;color:#d8dfd3}
+nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);padding:9px;display:flex;gap:7px;overflow:auto;overscroll-behavior-x:contain}
+nav button{border:0;background:#edf0e9;padding:9px 13px;border-radius:22px;white-space:nowrap;cursor:pointer}nav button.active{background:var(--green);color:#fff}
+main{max-width:1200px;margin:auto;padding:17px}.tab{display:none}.tab.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:17px;box-shadow:0 3px 12px #0000000b;margin-bottom:14px}
+h2,h3{margin:3px 0 11px}.muted,.small{color:var(--muted)}.small{font-size:12px}.stat{font-size:29px;font-weight:750}.progress{height:11px;background:#e4e5df;border-radius:9px;overflow:hidden}.bar{height:100%;background:var(--green);width:0}
+.item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.item:last-child{border-bottom:0}.item input{margin-top:4px}
+.btn{border:0;border-radius:8px;padding:9px 12px;background:var(--green);color:#fff;cursor:pointer}.btn.secondary{background:#e8eae4;color:var(--ink)}.btn.danger{background:var(--red)}
+input,select,textarea{width:100%;padding:9px;border:1px solid #cdd0c7;border-radius:8px;background:#fff;font:inherit}textarea{min-height:80px}
+label{display:block;margin:8px 0}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.right{margin-left:auto}
+.badge{display:inline-block;background:var(--green2);padding:4px 8px;border-radius:12px;font-size:12px}.warning{background:#fff4d6;border-left:4px solid var(--amber);padding:12px;border-radius:7px;margin:10px 0}
+table{width:100%;border-collapse:collapse}th,td{padding:9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.scroll{overflow:auto}
+.file{border:1px dashed #bfc3b8;border-radius:9px;padding:10px;margin:8px 0;background:#fafbf8}.empty{text-align:center;padding:18px;color:var(--muted)}
+.drop{border:2px dashed #bcc3b4;border-radius:11px;padding:20px;text-align:center;background:#fafbf8;cursor:pointer}.drop.drag{background:#edf2e8;border-color:var(--green)}
+.preview{max-width:180px;max-height:120px;border-radius:7px;border:1px solid var(--line)}
+.notice{padding:12px;background:#eff3ea;border-left:4px solid var(--green);border-radius:7px}
+@media(max-width:650px){.two{grid-template-columns:1fr}main{padding:10px}}
+
+/* Compliance + Labels: force true iPhone-width cards; no sideways scrolling */
+#setup,#labels{width:100%;max-width:100%;min-width:0;overflow-x:hidden;}
+#setup .card,#labels .card{width:100%;max-width:100%;min-width:0;overflow:hidden;}
+#setup .item,#labels .item{width:100%;max-width:100%;min-width:0;align-items:flex-start;}
+#setup .item>div,#labels .item>div{min-width:0;max-width:100%;overflow-wrap:anywhere;word-break:break-word;}
+#setup h2,#setup h3,#labels h2,#labels h3{max-width:100%;overflow-wrap:anywhere;}
+#setup input[type=checkbox],#labels input[type=checkbox]{flex:0 0 auto;width:auto;}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;}
+.section-head h2{margin:0;}
+.section-kicker{font-size:12px;color:var(--muted);margin:0 0 4px;text-transform:uppercase;letter-spacing:.06em;font-weight:700;}
+.check-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px;}
+.summary-box{background:#f4f6f0;border:1px solid var(--line);border-radius:11px;padding:12px;min-width:0;}
+.summary-box strong{display:block;font-size:22px;}
+@media(max-width:650px){.check-summary{grid-template-columns:1fr 1fr;}#setup .card,#labels .card{padding:14px;}#setup .item,#labels .item{padding:11px 0;}}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#263828">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Home Food">
+<link rel="manifest" href="./manifest.json">
+<style>
+html{-webkit-text-size-adjust:100%;background:#f5f5f0;overflow-x:hidden;overscroll-behavior-x:none}
+body{margin:0;padding-top:env(safe-area-inset-top);padding-bottom:calc(70px + env(safe-area-inset-bottom));overflow-x:hidden;overscroll-behavior-x:none;width:100%;max-width:100%;touch-action:pan-y}
+button,input,select,textarea{font-size:16px!important}
+button,.tab,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.tabs,nav{scrollbar-width:none}
+.tabs::-webkit-scrollbar,nav::-webkit-scrollbar{display:none}
+@media(max-width:700px){.container,main{width:100%!important;max-width:none!important}}
+#iosInstall{display:none;position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:9999;background:#263828;color:#fff;border-radius:18px;padding:14px 16px;box-shadow:0 8px 30px #0004;font:15px -apple-system,BlinkMacSystemFont,sans-serif}
+#iosInstall button{float:right;background:none;border:0;color:#fff;font-size:22px!important}
+</style></head>
+<body>
+<header><h1>Timothy Burns — Home Food Business</h1><p>New York • Town of Lindley • Steuben County</p></header>
+<nav id="nav">
+<button class="active" data-tab="dashboard">Dashboard</button><button data-tab="setup">Compliance</button>
+<button data-tab="products">Products</button><button data-tab="recipes">Recipes</button><button data-tab="labels">Labels</button>
+<button data-tab="production">Production</button><button data-tab="sales">Sales</button><button data-tab="costs">Costs</button>
+<button data-tab="docs">Documents</button><button data-tab="backup">Backup</button>
+</nav>
+<main>
+<section id="dashboard" class="tab active"><div class="grid">
+<div class="card"><div class="muted">Setup completion</div><div class="stat" id="pct">0%</div><div class="progress"><div class="bar" id="bar"></div></div><p class="small" id="progressText"></p></div>
+<div class="card"><div class="muted">Products</div><div class="stat" id="productCount">0</div></div><div class="card"><div class="muted">Documents</div><div class="stat" id="docCount">0</div></div><div class="card"><div class="muted">Open tasks</div><div class="stat" id="openTasks">0</div></div></div>
+<div class="card"><h2>What needs attention</h2><div id="attention"></div></div>
+<div class="grid"><div class="card"><h3>NY pathway</h3><span class="badge">Home Processor Exemption</span><p>Use this dashboard to document the setup and records for qualifying home-processed foods.</p></div>
+<div class="card"><h3>Lindley</h3><p>Track the local home-occupation/zoning process here.</p><a target="_blank" href="https://townoflindley.gov/documents">Town documents →</a></div></div></section>
+<section id="setup" class="tab">
+<div class="card">
+  <p class="section-kicker">Business requirements</p>
+  <div class="section-head"><h2>Compliance</h2><span class="badge">13 items</span></div>
+  <div class="check-summary"><div class="summary-box"><span class="small">Completed</span><strong id="complianceDone">0</strong></div><div class="summary-box"><span class="small">Remaining</span><strong id="complianceLeft">13</strong></div></div>
+  <div id="checks"></div>
+</div>
+<div class="card">
+  <p class="section-kicker">Your records</p><div class="section-head"><h2>Compliance notes</h2></div>
+  <textarea id="complianceNotes" placeholder="Dates, people contacted, application status, answers, permit numbers, etc."></textarea>
+</div>
+<div class="card">
+  <p class="section-kicker">Keep in mind</p><div class="section-head"><h2>Key NY reminders</h2></div>
+  <div class="notice">Home Processor Registration is location-specific. If your processing location changes, verify whether a new registration is required.</div>
+  <div class="warning">Sales under this pathway must remain within New York State. Keep your sales records here.</div>
+  <div class="warning">If you use a private well, keep the required certified-lab water analysis with your business records.</div>
+</div>
+</section>
+<section id="products" class="tab"><div class="card"><div class="row"><h2>Products</h2><button class="btn right" onclick="addProduct()">+ Add product</button></div><div class="scroll"><table><thead><tr><th>Product</th><th>NY category</th><th>Restrictions/notes</th><th>Status</th><th></th></tr></thead><tbody id="productsTable"></tbody></table></div></div></section>
+<section id="recipes" class="tab"><div class="card"><div class="row"><h2>Recipes</h2><button class="btn right" onclick="openRecipeForm()">+ New recipe</button></div><div class="two"><label>Product<select id="recipeProduct"></select></label><label>Version<input id="recipeVersion" value="1.0"></label></div><div class="two"><label>Yield<input id="recipeYield" placeholder="e.g. 24 muffins"></label><label>Notes<textarea id="recipeNotes" placeholder="Procedure, temperatures, timing, special controls"></textarea></label></div><label>Ingredients<textarea id="recipeIngredients" placeholder="Ingredient and quantity"></textarea></label><button class="btn" onclick="saveRecipe()">Save recipe</button></div><div class="card"><h2>Saved recipes</h2><div class="scroll"><table><thead><tr><th>Product</th><th>Version</th><th>Yield</th><th>Ingredients</th><th>Notes</th><th></th></tr></thead><tbody id="recipesTable"></tbody></table></div></div></section>
+<section id="labels" class="tab">
+<div class="card">
+  <p class="section-kicker">Packaging</p><div class="section-head"><h2>Label builder</h2><span class="badge">Print-ready</span></div>
+  <div class="two"><label>Product<input id="labProduct"></label><label>Net quantity<input id="labNet" placeholder="Net Wt 8 oz (227 g)"></label></div>
+  <label>Ingredients<input id="labIngredients"></label>
+  <label>Allergens<input id="labAllergens" placeholder="Contains: ..."></label>
+  <label>Processor name + full address<input id="labAddress"></label>
+  <label>Home-kitchen statement<input id="labHome" value="Made in a Home Kitchen"></label>
+  <div class="row"><button class="btn" onclick="previewLabel()">Preview label</button><button class="btn secondary" onclick="window.print()">Print / Save PDF</button></div>
+  <div id="labelPreview" style="display:none;margin-top:15px"></div>
+</div>
+<div class="card">
+  <p class="section-kicker">Before selling</p><div class="section-head"><h2>Label checklist</h2><span class="badge">7 items</span></div>
+  <div id="labelChecklist"></div>
+</div>
+</section>
+<section id="production" class="tab"><div class="card"><h2>Production / batch log</h2><div class="two"><label>Date<input id="batchDate" type="date"></label><label>Batch #<input id="batchNo"></label></div><div class="two"><label>Product<input id="batchProduct"></label><label>Recipe version<input id="batchRecipe"></label></div><div class="two"><label>Quantity<input id="batchQty" type="number"></label><label>Best-by<input id="batchBest" type="date"></label></div><label>Ingredient lots / production notes<textarea id="batchNotes"></textarea></label><button class="btn" onclick="saveBatch()">Save batch</button></div><div class="card"><h2>Batch history</h2><div id="batches"></div></div></section>
+<section id="sales" class="tab"><div class="card"><h2>Sales log</h2><div class="two"><label>Date<input id="saleDate" type="date"></label><label>Product<input id="saleProduct"></label></div><div class="two"><label>Quantity<input id="saleQty" type="number"></label><label>Unit price<input id="salePrice" type="number" step=".01"></label></div><label>Customer / sales channel<input id="saleChannel"></label><button class="btn" onclick="saveSale()">Save sale</button></div><div class="card"><h2>Sales history</h2><div id="sales"></div></div></section>
+<section id="costs" class="tab"><div class="card"><h2>Cost & profit calculator</h2><div class="two"><label>Ingredients<input id="ci" type="number" step=".01" value="0"></label><label>Packaging<input id="cp" type="number" step=".01" value="0"></label><label>Labor / other<input id="cl" type="number" step=".01" value="0"></label><label>Units produced<input id="cu" type="number" value="1"></label><label>Selling price/unit<input id="cs" type="number" step=".01" value="0"></label></div><div class="grid"><div><div class="muted">Batch cost</div><div class="stat" id="ctotal">$0</div></div><div><div class="muted">Cost/unit</div><div class="stat" id="ccpu">$0</div></div><div><div class="muted">Profit/unit</div><div class="stat" id="cprofit">$0</div></div><div><div class="muted">Margin</div><div class="stat" id="cmargin">0%</div></div></div></div></section>
+<section id="docs" class="tab"><div class="card"><h2>Real document vault</h2><p class="small">Files are stored locally in this browser. Use Backup → Export regularly so you have a copy.</p><div id="drop" class="drop">Drag files here or click to choose files<input id="fileInput" type="file" multiple hidden></div><div class="two"><label>Category<select id="docCat"><option>Government</option><option>Zoning</option><option>Food safety</option><option>Recipe</option><option>Label</option><option>Insurance</option><option>Supplier</option><option>Tax</option><option>Other</option></select></label><label>Description<input id="docDesc" placeholder="Optional description"></label></div><div id="documents"></div></div></section>
+<section id="backup" class="tab"><div class="card"><h2>Backup & restore</h2><p>Export creates a backup file containing your checklist, products, recipes, batches, sales, notes, and document files. Keep the backup somewhere safe.</p><button class="btn" onclick="exportBackup()">Export complete backup</button><button class="btn secondary" onclick="document.getElementById('restoreInput').click()">Restore backup</button><input id="restoreInput" type="file" accept=".json" hidden><div class="warning">Restoring replaces the data currently stored in this browser.</div></div></section>
+<div class="card small">Official sources: <a target="_blank" href="https://agriculture.ny.gov/food-safety/home-processing">NYS Agriculture & Markets — Home Processing</a> · <a target="_blank" href="https://townoflindley.gov/documents">Town of Lindley — Documents</a>. Confirm current requirements with the government offices before production or sales.</div>
+</main>
+<script>
+const DBNAME='TimothyBurnsHomeFood',DBVER=1;let db;const KEY='timothyNYFunctional';
+let state=JSON.parse(localStorage.getItem(KEY)||'null')||{checks:Array(13).fill(false),notes:'',products:[{name:'Bread',cat:'Breads',rules:'No vegetables; certain high-acid/dried ingredients may be allowed.',status:'Needs review'},{name:'Muffin',cat:'Muffins',rules:'No vegetables; certain high-acid/dried ingredients may be allowed.',status:'Needs review'},{name:'Doughnut',cat:'Doughnuts',rules:'No cream fillings.',status:'Needs review'},{name:'Double-crust fruit pie',cat:'Double-crust fruit pies',rules:'No single-crust, custard, nut, meat, or refrigeration-required pies.',status:'Needs review'}],recipes:[],batches:[],sales:[]};
+const checks=['Confirm the NY Home Processor Exemption is the correct pathway','Submit the NYS Home Processor Registration Request','If using a private well, obtain the required certified-lab water analysis','Confirm every recipe against NYS approved/prohibited food categories','Contact Town of Lindley Code Enforcement/Planning about home occupation requirements','Complete required Lindley zoning / conditional-use paperwork','Record the local zoning decision/permit number','Set up business name/structure and applicable registrations','Confirm NY sales-tax obligations with NY Taxation & Finance','Decide on and document product-liability insurance','Create a compliant label for every product','Create master recipes and recipe versions','Create production, sales, and expense records'];
+const labelChecks=['Product identity/name','Ingredients in predominance by weight','Net quantity','Processor name','Full address','Allergen identification','Required home-kitchen statement'];
+function esc(x){return String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));updateDashboard()}
+function showTab(id){document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));window.scrollTo(0,0)}
+document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+function renderChecks(){document.getElementById('checks').innerHTML=checks.map((x,i)=>`<div class="item"><input type="checkbox" ${state.checks[i]?'checked':''} onchange="state.checks[${i}]=this.checked;save();renderChecks()"><div><b>${x}</b><div class="small">${i<7?'NY / Local':'Business / records'}</div></div></div>`).join('');const done=state.checks.filter(Boolean).length;document.getElementById('complianceDone').textContent=done;document.getElementById('complianceLeft').textContent=checks.length-done;document.getElementById('complianceNotes').value=state.notes;document.getElementById('complianceNotes').oninput=e=>{state.notes=e.target.value;save()};document.getElementById('labelChecklist').innerHTML=labelChecks.map(x=>`<div class="item"><input type="checkbox"><div>${x}</div></div>`).join('')}
+function renderProducts(){document.getElementById('productsTable').innerHTML=state.products.map((p,i)=>`<tr><td><input value="${esc(p.name)}" onchange="state.products[${i}].name=this.value;save();renderRecipeProducts()"></td><td>${esc(p.cat)}</td><td>${esc(p.rules)}</td><td><select onchange="state.products[${i}].status=this.value;save()"><option ${p.status==='Needs review'?'selected':''}>Needs review</option><option ${p.status==='Ready'?'selected':''}>Ready</option><option ${p.status==='Approved'?'selected':''}>Approved</option></select></td><td><button class="btn danger" onclick="state.products.splice(${i},1);save();renderProducts();renderRecipeProducts()">Delete</button></td></tr>`).join('')}
+function addProduct(){state.products.push({name:'New product',cat:'',rules:'',status:'Needs review'});save();renderProducts();renderRecipeProducts()}
+function renderRecipeProducts(){recipeProduct.innerHTML=state.products.map(p=>`<option>${esc(p.name)}</option>`).join('')}
+function openRecipeForm(){showTab('recipes');recipeProduct.focus()}
+function saveRecipe(){state.recipes.push({product:recipeProduct.value,version:recipeVersion.value,yield:recipeYield.value,ingredients:recipeIngredients.value,notes:recipeNotes.value});save();renderRecipes();recipeVersion.value='1.0';recipeYield.value='';recipeIngredients.value='';recipeNotes.value=''}
+function renderRecipes(){recipesTable.innerHTML=state.recipes.length?state.recipes.map((r,i)=>`<tr><td>${esc(r.product)}</td><td>${esc(r.version)}</td><td>${esc(r.yield)}</td><td>${esc(r.ingredients)}</td><td>${esc(r.notes)}</td><td><button class="btn danger" onclick="state.recipes.splice(${i},1);save();renderRecipes()">Delete</button></td></tr>`).join(''):'<tr><td colspan="6" class="empty">No recipes yet.</td></tr>'}
+function previewLabel(){labelPreview.style.display='block';labelPreview.innerHTML=`<div class="card" style="max-width:430px"><h2>${esc(labProduct.value||'PRODUCT NAME')}</h2><p>${esc(labIngredients.value||'Ingredients: …')}</p><p><b>${esc(labNet.value||'NET WT …')}</b></p><p>${esc(labAddress.value||'Processor name and full address')}</p><p>${esc(labAllergens.value||'Contains: …')}</p><p>${esc(labHome.value||'Made in a Home Kitchen')}</p></div>`}
+function saveBatch(){state.batches.push({date:batchDate.value,batch:batchNo.value,product:batchProduct.value,recipe:batchRecipe.value,qty:batchQty.value,best:batchBest.value,notes:batchNotes.value});save();renderBatches()}
+function renderBatches(){batches.innerHTML=state.batches.length?state.batches.slice().reverse().map(b=>`<div class="file"><b>${esc(b.product)}</b> — ${esc(b.batch)}<br>${esc(b.date)} • Qty ${esc(b.qty)} • Best-by ${esc(b.best)}<br>${esc(b.notes)}</div>`).join(''):'<div class="empty">No batches recorded.</div>'}
+function saveSale(){state.sales.push({date:saleDate.value,product:saleProduct.value,qty:saleQty.value,price:salePrice.value,channel:saleChannel.value});save();renderSales()}
+function renderSales(){sales.innerHTML=state.sales.length?state.sales.slice().reverse().map(s=>`<div class="file"><b>${esc(s.product)}</b> — ${esc(s.date)}<br>${esc(s.qty)} × $${esc(s.price)} = <b>$${(Number(s.qty||0)*Number(s.price||0)).toFixed(2)}</b><br>${esc(s.channel)}</div>`).join(''):'<div class="empty">No sales recorded.</div>'}
+function calc(){let total=+ci.value+ +cp.value+ +cl.value,u=Math.max(1,+cu.value||1),cpu=total/u,profit=+cs.value-cpu;ctotal.textContent='$'+total.toFixed(2);ccpu.textContent='$'+cpu.toFixed(2);cprofit.textContent='$'+profit.toFixed(2);cmargin.textContent=(+cs.value?profit/+cs.value*100:0).toFixed(1)+'%'}
+['ci','cp','cl','cu','cs'].forEach(id=>document.getElementById(id).addEventListener('input',calc));
+function openDB(){return new Promise((resolve,reject)=>{const r=indexedDB.open(DBNAME,DBVER);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('files'))r.result.createObjectStore('files',{keyPath:'id',autoIncrement:true})};r.onsuccess=()=>{db=r.result;resolve()};r.onerror=()=>reject(r.error)})}
+function fileAdd(file,category,description){return new Promise((resolve,reject)=>{const tx=db.transaction('files','readwrite');const req=tx.objectStore('files').add({name:file.name,type:file.type,size:file.size,category,description,blob:file,created:new Date().toISOString()});req.onsuccess=resolve;req.onerror=()=>reject(req.error)})}
+function fileAll(){return new Promise((resolve,reject)=>{const tx=db.transaction('files','readonly');const r=tx.objectStore('files').getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+function fileDelete(id){return new Promise((resolve,reject)=>{const tx=db.transaction('files','readwrite');const r=tx.objectStore('files').delete(id);r.onsuccess=resolve;r.onerror=()=>reject(r.error)})}
+async function handleFiles(files){for(const f of files)await fileAdd(f,docCat.value,docDesc.value);docDesc.value='';renderDocs()}
+async function renderDocs(){const fs=await fileAll();docCount.textContent=fs.length;documents.innerHTML=fs.length?fs.map(f=>`<div class="file"><b>${esc(f.name)}</b> <span class="badge">${esc(f.category)}</span><br><span class="small">${esc(f.description||'')} • ${(f.size/1024).toFixed(1)} KB • ${new Date(f.created).toLocaleString()}</span><div class="row" style="margin-top:7px"><button class="btn secondary" onclick="downloadFile(${f.id})">Open/download</button><button class="btn danger" onclick="removeFile(${f.id})">Delete</button></div></div>`).join(''):'<div class="empty">No files stored yet.</div>'}
+async function downloadFile(id){const fs=await fileAll(),f=fs.find(x=>x.id===id);if(!f)return;const url=URL.createObjectURL(f.blob);const a=document.createElement('a');a.href=url;a.download=f.name;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+async function removeFile(id){if(confirm('Delete this stored document?')){await fileDelete(id);renderDocs();updateDashboard()}}
+drop.onclick=()=>fileInput.click();fileInput.onchange=()=>handleFiles(fileInput.files);drop.ondragover=e=>{e.preventDefault();drop.classList.add('drag')};drop.ondragleave=()=>drop.classList.remove('drag');drop.ondrop=e=>{e.preventDefault();drop.classList.remove('drag');handleFiles(e.dataTransfer.files)};
+async function exportBackup(){const fs=await fileAll(),files=[];for(const f of fs){files.push({name:f.name,type:f.type,size:f.size,category:f.category,description:f.description,created:f.created,data:Array.from(new Uint8Array(await f.blob.arrayBuffer()))})}const payload={version:2,exported:new Date().toISOString(),state,files};const blob=new Blob([JSON.stringify(payload)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='timothy-burns-home-food-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click()}
+restoreInput.onchange=async()=>{const f=restoreInput.files[0];if(!f)return;try{const p=JSON.parse(await f.text());if(!p.state||!Array.isArray(p.files))throw Error('Invalid backup');if(!confirm('Replace all current browser data with this backup?'))return;state=Object.assign(state,p.state);save();const tx=db.transaction('files','readwrite'),store=tx.objectStore('files');store.clear();for(const x of p.files){const bytes=new Uint8Array(x.data),blob=new Blob([bytes],{type:x.type||'application/octet-stream'});store.add({name:x.name,type:x.type,size:x.size,category:x.category,description:x.description,created:x.created,blob})}tx.oncomplete=()=>{renderAll();alert('Backup restored.')}}catch(e){alert('Could not restore that backup: '+e.message)}};
+function updateDashboard(){const done=state.checks.filter(Boolean).length,p=Math.round(done/checks.length*100);pct.textContent=p+'%';bar.style.width=p+'%';progressText.textContent=`${done} of ${checks.length} compliance tasks complete`;productCount.textContent=state.products.length;openTasks.textContent=checks.length-done;attention.innerHTML=(!state.checks[4]?'<div class="item"><span class="badge">OPEN</span> Confirm Lindley home-occupation/zoning requirements.</div>':'')+(!state.checks[1]?'<div class="item"><span class="badge">OPEN</span> Complete NYS Home Processor registration.</div>':'')+(!state.checks[10]?'<div class="item"><span class="badge">OPEN</span> Complete compliant labels.</div>':'')||'<div class="notice">No open dashboard alerts.</div>'}
+async function renderAll(){renderChecks();renderProducts();renderRecipeProducts();renderRecipes();renderBatches();renderSales();calc();await renderDocs();updateDashboard()}
+(async()=>{await openDB();await renderAll()})()
+</script>
+<div id="iosInstall"><button onclick="this.parentElement.style.display='none'">×</button>Add this app to your iPhone: tap <b>Share</b> → <b>Add to Home Screen</b>.</div>
+<script>
+(()=>{const ios=/iPhone|iPad|iPod/i.test(navigator.userAgent),standalone=navigator.standalone||matchMedia('(display-mode:standalone)').matches;if(ios&&!standalone)setTimeout(()=>{const x=document.getElementById('iosInstall');if(x)x.style.display='block'},1000);if('serviceWorker' in navigator&&location.protocol!=='file:')navigator.serviceWorker.register('./sw.js').catch(()=>{});})();
+</script></body></html>
